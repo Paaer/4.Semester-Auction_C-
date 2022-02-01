@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AuctionMetalWebApplication.Models.Seller>
+
+
+@{
+    ViewBag.Title = "Auction";
+}
+
+<h2>Availble Auctions</h2>
+
+<table class="auctionTable">
+    <tr>
+        <th>Type of Metal</th>
+        <th>Amount</th>
+        <th>End date & time</th>
+        <th>Highest bid</th>
+    </tr>
+
+
+    @foreach (var seller in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => seller.MetalType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => seller.Amount) Kg 
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => seller.TimeLimit) | 
+    </td>
+    <td>
+             @Html.DisplayFor(modelItem => seller.HighestBidder)  €
+    </td>
+    <td>
+        @Html.ActionLink("Bid", "Create", new { id = seller.SellerId })
+    </td>
+    
+</tr>
+  
+     }
+
+</table>

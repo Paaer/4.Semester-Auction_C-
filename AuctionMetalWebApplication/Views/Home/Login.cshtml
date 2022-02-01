@@ -1,0 +1,50 @@
+﻿@model AuctionMetalWebApplication.Models.Buyer
+
+
+
+@{
+    ViewBag.Title = "Login using Name, Mail & Phone number";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Login</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td class="control-label col-md-2">Name: </td>
+                <td>@Html.TextBoxFor(buyer => buyer.Name)</td>
+                <td>@Html.ValidationMessageFor(buyer => buyer.Name)</td>
+            </tr>
+            <tr>
+                <td class="control-label col-md-2">Email: </td>
+                <td>@Html.TextBoxFor(buyer => buyer.Email)</td>
+                <td>@Html.ValidationMessageFor(buyer => buyer.Email)</td>
+            </tr>
+            <tr>
+                <td class="control-label col-md-2">Phone number: </td>
+                <td>@Html.TextBoxFor(buyer => buyer.PhoneNumer)</td>
+                <td>@Html.ValidationMessageFor(buyer => buyer.PhoneNumer)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}  
